@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/image_bridge"
+        android:layout_width="match_parent"
+        android:layout_height="224dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src = "@color/dark_green"/>
+
+    <TextView
+        android:id="@+id/bridge_container"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        app:layout_constraintStart_toStartOf="@+id/image_bridge"
+        app:layout_constraintTop_toBottomOf="@+id/image_bridge" />
+
+    <TextView
+        android:id="@+id/text_bridge_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="1dp"
+        android:clickable="false"
+        android:focusable="false"
+        android:fontFamily="sans-serif"
+        android:lineSpacingExtra="8sp"
+        android:textColor="@color/black_87"
+        android:textSize="16sp"
+        android:textStyle="normal"
+
+        app:layout_constraintStart_toEndOf="@id/bridge_indicator"
+        app:layout_constraintTop_toTopOf="@id/bridge_indicator"
+        tools:text="Александра Невского" />
+
+    <TextView
+        android:id="@+id/text_bridge_divorces_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="22dp"
+        android:clickable="false"
+        android:focusable="false"
+        app:layout_constraintStart_toEndOf="@id/bridge_indicator"
+        app:layout_constraintTop_toTopOf="@id/text_bridge_title"
+        tools:text="2:20 – 5:10" />
+
+    <ImageView
+        android:id="@+id/bridge_indicator"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="@id/bridge_container"
+        app:layout_constraintTop_toTopOf="@id/bridge_container"
+        tools:src="@drawable/ic_brige_normal" />
+
+    <TextView
+        android:id="@+id/bridge_info"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="18dp"
+        android:fontFamily="sans-serif"
+        android:lineSpacingExtra="6sp"
+        android:textColor="@color/brownish_grey_two"
+        android:textSize="14sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="@id/bridge_container"
+        app:layout_constraintStart_toStartOf="@id/bridge_container"
+        app:layout_constraintTop_toBottomOf="@id/bridge_container"
+        tools:text="Первый мост на этом месте был построен
+в 1893—1894 годах по проекту инженера Н. М. Мазурова. Это был двадцатипятипролётный деревянный трапецеидально-подкосный мост длиной 326 м со средним 14-метровым разводным пролётом. Трасса моста пролегала по оси узкого Зоологического переулка. В 1930 и 1937 годах мост расширялся, деревянные пролёты были заменены на металлические.
+" />
+
+    <Button
+        android:id="@+id/button_remind_me"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/weird_green"
+        android:drawableLeft="@drawable/ic_kolocol_w"
+        android:drawablePadding="12dp"
+        android:text="@string/text_button_remind"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/bridge_container" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

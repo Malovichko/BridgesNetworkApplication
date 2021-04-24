@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">BridgesNetworkApplication</string>
+    <string name="baseURL">http://gdemost.handh.ru:1235/</string>
+    <string name="dialog_message">За сколько до закрытия моста вас предупредить?</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Отменить</string>
+    <string name="text_button_remind">НАПОМНИТЬ</string>
+</resources>

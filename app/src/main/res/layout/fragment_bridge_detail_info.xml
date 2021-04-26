@@ -80,16 +80,25 @@
 в 1893—1894 годах по проекту инженера Н. М. Мазурова. Это был двадцатипятипролётный деревянный трапецеидально-подкосный мост длиной 326 м со средним 14-метровым разводным пролётом. Трасса моста пролегала по оси узкого Зоологического переулка. В 1930 и 1937 годах мост расширялся, деревянные пролёты были заменены на металлические.
 " />
 
-    <Button
-        android:id="@+id/button_remind_me"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:background="@color/weird_green"
-        android:drawableLeft="@drawable/ic_kolocol_w"
-        android:drawablePadding="12dp"
-        android:text="@string/text_button_remind"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@id/bridge_container" />
+<!--    <Button-->
+<!--        android:id="@+id/button_remind_me"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="56dp"-->
+<!--        android:background="@color/weird_green"-->
+<!--        android:drawableLeft="@drawable/ic_kolocol_w"-->
+<!--        android:drawablePadding="12dp"-->
+<!--        android:text="@string/text_button_remind"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="@id/bridge_container" />-->
 
+    <com.androidschool.bridgesnetworkapplication.presentation.customButton.IconButton
+        android:id="@+id/button_remind_me"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        app:iconButton_text="@string/text_button_remind"
+        app:icon_button_icon="@drawable/ic_kolocol_w"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

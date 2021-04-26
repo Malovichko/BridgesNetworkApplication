@@ -47,7 +47,7 @@ object DialogTimeScreen {
                 builder.setPositiveButton(
                     R.string.ok,
                     DialogInterface.OnClickListener { dialog, which ->
-                        fragment.button_remind_me.text = chosenTime
+                        fragment.button_remind_me.title = chosenTime
                         dialog.dismiss()
                     })
                 builder.setNegativeButton(

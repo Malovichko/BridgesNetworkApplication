@@ -1,6 +1,7 @@
 package com.androidschool.bridgesnetworkapplication.presentation.bridgeInfo
 
 import com.androidschool.bridgesnetworkapplication.data.network.NetworkServiceHolder
+import com.androidschool.bridgesnetworkapplication.domain.NetworkInteractor
 import com.androidschool.bridgesnetworkapplication.domain.mapper.BridgeInfoMapper
 import com.androidschool.bridgesnetworkapplication.domain.mapper.SimpleBridgeMapper
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
@@ -10,15 +11,12 @@ class BridgePresenter constructor(private val view: BridgeView) {
     private val retrofitService = NetworkServiceHolder.retrofitService!!
 
     fun onViewCreated(bridgeId: Int?) {
+        val interactor = NetworkInteractor(retrofitService)
 
         bridgeId?.let {
-            retrofitService.getBridgeInfo(it)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .map {
-                    BridgeInfoMapper.mapApiToDomain(it)
-                }
-                .subscribe(
+            val interactor = NetworkInteractor(retrofitService, it)
+            interactor.getBridgesInfo()
+                ?.subscribe(
                     {
                         view.fillData(
                             it.id,
@@ -34,13 +32,7 @@ class BridgePresenter constructor(private val view: BridgeView) {
                 )
         }
 
-        retrofitService.getTimes().subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .map {
-                return@map it.map {
-                    SimpleBridgeMapper.mapApiTimeToDomain(it)
-                }.toList()
-            }
+        interactor.getTimes()
             .subscribe(
                 {
                     if (bridgeId != null) {

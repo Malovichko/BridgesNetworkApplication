@@ -11,6 +11,9 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.androidschool.bridgesnetworkapplication.R
 import com.androidschool.bridgesnetworkapplication.domain.model.TimeModel
+import com.androidschool.bridgesnetworkapplication.presentation.customButton.IconButton
+import com.androidschool.bridgesnetworkapplication.presentation.setIcons.BridgeStatus
+import com.androidschool.bridgesnetworkapplication.presentation.setIcons.SetIcons
 import com.google.android.material.progressindicator.LinearProgressIndicator
 import com.squareup.picasso.Picasso
 import java.text.SimpleDateFormat
@@ -26,7 +29,7 @@ class BridgeFragment : Fragment(R.layout.fragment_bridge_detail_info), BridgeVie
     private lateinit var imageBridge: ImageView
     private lateinit var textViewTime: TextView
     private lateinit var bridgeIndicator: ImageView
-    private lateinit var buttonRemindMe: Button
+    private lateinit var buttonRemindMe: IconButton
 
     private val presenter = BridgePresenter(this)
 
@@ -87,44 +90,14 @@ class BridgeFragment : Fragment(R.layout.fragment_bridge_detail_info), BridgeVie
     }
 
     override fun setupTimeList(list: List<TimeModel>, id: Int) {
-        val timeStart = list.get(id - 1).start
-        val timeEnd = list.get(id - 1).end
-        textViewTime.text = list.get(id - 1).start + " - " + list.get(id - 1).end
-        val timeZone = TimeZone.getTimeZone("Europe/Moscow")
-        var timeZone1 = TimeZone.getTimeZone("Europe/Moscow")
-        val timeZoneOffset = ((timeZone1.rawOffset - timeZone.rawOffset) / 1000).toLong()
-        var startStr = if (timeStart.length == 4) "0" + timeStart else timeStart
-        var endStr = if (timeEnd.length == 4) "0" + timeEnd else timeEnd
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            timeZone1 = TimeZone.getTimeZone(ZoneId.systemDefault())
-            var start =
-                if (timeStart.length == 4) LocalTime.parse("0" + timeStart) else LocalTime.parse(
-                    timeStart
-                )
-            var end = if (timeEnd.length == 4) LocalTime.parse("0" + timeEnd) else LocalTime.parse(
-                timeEnd
-            )
-            start = start.plusSeconds(timeZoneOffset)
-            end = end.plusSeconds(timeZoneOffset)
-            startStr = start.toString()
-            endStr = end.toString()
-
-            val calendar = Calendar.getInstance()
-            val sdf = SimpleDateFormat("HH:mm")
-            val getCurrentDateTime = sdf.format(calendar.time)
-            val time = LocalTime.parse(getCurrentDateTime)
-
-            if (time.isBefore(start) || time.isAfter(end)) {
-                if (time.isBefore(start)) {
-                    val moreHour = (start.toSecondOfDay() - time.toSecondOfDay()) / 3600 > 0
-                    if (moreHour) bridgeIndicator.setImageResource(R.drawable.ic_brige_normal)
-                    else bridgeIndicator.setImageResource(R.drawable.ic_brige_soon)
-                } else bridgeIndicator.setImageResource(R.drawable.ic_brige_normal)
-            } else bridgeIndicator.setImageResource(R.drawable.ic_brige_late)
+        val setIcons = SetIcons()
+        when (setIcons.setTimeDivorces(list.get(id - 1).start, list.get(id - 1).end)) {
+            BridgeStatus.OPEN -> bridgeIndicator.setImageResource(R.drawable.ic_brige_normal)
+            BridgeStatus.CLOSE -> bridgeIndicator.setImageResource(R.drawable.ic_brige_late)
+            BridgeStatus.SOON_CLOSE -> bridgeIndicator.setImageResource(R.drawable.ic_brige_soon)
+            BridgeStatus.ERR -> return
         }
-        val time = "$startStr - $endStr";
-
-        textViewTime.text = time
+        textViewTime.text = setIcons.getStartTime() + " - " + setIcons.getEndTime()
     }
 
 

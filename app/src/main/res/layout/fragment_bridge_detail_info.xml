@@ -12,7 +12,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src = "@color/dark_green"/>
+        tools:src = "@color/dark_green"
+        tools:scaleType="centerCrop"/>
 
     <TextView
         android:id="@+id/bridge_container"
@@ -44,11 +45,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="18dp"
-        android:layout_marginTop="22dp"
         android:clickable="false"
         android:focusable="false"
         app:layout_constraintStart_toEndOf="@id/bridge_indicator"
-        app:layout_constraintTop_toTopOf="@id/text_bridge_title"
+        app:layout_constraintTop_toBottomOf="@id/text_bridge_title"
         tools:text="2:20 – 5:10" />
 
     <ImageView
@@ -73,8 +73,8 @@
         android:textColor="@color/brownish_grey_two"
         android:textSize="14sp"
         android:textStyle="normal"
-        app:layout_constraintEnd_toEndOf="@id/bridge_container"
-        app:layout_constraintStart_toStartOf="@id/bridge_container"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/bridge_container"
         tools:text="Первый мост на этом месте был построен
 в 1893—1894 годах по проекту инженера Н. М. Мазурова. Это был двадцатипятипролётный деревянный трапецеидально-подкосный мост длиной 326 м со средним 14-метровым разводным пролётом. Трасса моста пролегала по оси узкого Зоологического переулка. В 1930 и 1937 годах мост расширялся, деревянные пролёты были заменены на металлические.

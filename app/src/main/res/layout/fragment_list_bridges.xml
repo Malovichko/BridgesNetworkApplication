@@ -18,6 +18,7 @@
         android:textSize="20sp"
         style="@style/Toolbar"
         app:titleTextColor="@color/white"
+
         />
 
     <ImageView

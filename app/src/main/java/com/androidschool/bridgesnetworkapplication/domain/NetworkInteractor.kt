@@ -8,13 +8,8 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 
 class NetworkInteractor constructor(
     private val bridgesApiService: BridgesApiService,
+    private val bridgeId: Int? = null
 ) {
-
-    private var id: Int? = 0
-
-    constructor(bridgesApiService: BridgesApiService, bridgeId: Int?) : this(bridgesApiService) {
-        id = bridgeId
-    }
 
     fun getBridges() = bridgesApiService.getBridges()
         .subscribeOn(Schedulers.io())
@@ -25,7 +20,7 @@ class NetworkInteractor constructor(
             }.toList()
         }
 
-    fun getBridgesInfo() = id?.let {
+    fun getBridgesInfo() = bridgeId?.let {
         bridgesApiService.getBridgeInfo(it)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

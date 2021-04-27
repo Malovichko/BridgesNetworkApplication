@@ -1,18 +1,13 @@
 package com.androidschool.bridgesnetworkapplication.presentation.bridgesList.list
 
-import android.os.Build
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.androidschool.bridgesnetworkapplication.R
 import com.androidschool.bridgesnetworkapplication.domain.model.BridgeModel
-import com.androidschool.bridgesnetworkapplication.presentation.setIcons.BridgeStatus
-import com.androidschool.bridgesnetworkapplication.presentation.setIcons.SetIcons
-import java.text.SimpleDateFormat
-import java.time.LocalTime
-import java.time.ZoneId
-import java.util.*
+import com.androidschool.bridgesnetworkapplication.presentation.processingTime.BridgeStatus
+import com.androidschool.bridgesnetworkapplication.presentation.processingTime.ProcessingTime
 
 class BridgesViewHolder(
     rootView: View,
@@ -42,8 +37,8 @@ class BridgesViewHolder(
     }
 
     private fun setTimeDivorces(item: BridgeModel) {
-        val setIcons = SetIcons()
-        when (setIcons.setTimeDivorces(item.start, item.end)) {
+        val setIcons = ProcessingTime()
+        when (setIcons.getBridgeIndicator(item.start, item.end)) {
             BridgeStatus.OPEN -> bridgeIndicator.setImageResource(R.drawable.ic_brige_normal)
             BridgeStatus.CLOSE -> bridgeIndicator.setImageResource(R.drawable.ic_brige_late)
             BridgeStatus.SOON_CLOSE -> bridgeIndicator.setImageResource(R.drawable.ic_brige_soon)

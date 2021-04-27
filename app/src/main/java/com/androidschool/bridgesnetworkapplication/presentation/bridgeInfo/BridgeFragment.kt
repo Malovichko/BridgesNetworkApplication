@@ -1,25 +1,16 @@
 package com.androidschool.bridgesnetworkapplication.presentation.bridgeInfo
 
-import android.icu.number.NumberFormatter.with
-import android.os.Build
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.androidschool.bridgesnetworkapplication.R
 import com.androidschool.bridgesnetworkapplication.domain.model.TimeModel
 import com.androidschool.bridgesnetworkapplication.presentation.customButton.IconButton
-import com.androidschool.bridgesnetworkapplication.presentation.setIcons.BridgeStatus
-import com.androidschool.bridgesnetworkapplication.presentation.setIcons.SetIcons
-import com.google.android.material.progressindicator.LinearProgressIndicator
+import com.androidschool.bridgesnetworkapplication.presentation.processingTime.BridgeStatus
+import com.androidschool.bridgesnetworkapplication.presentation.processingTime.ProcessingTime
 import com.squareup.picasso.Picasso
-import java.text.SimpleDateFormat
-import java.time.LocalTime
-import java.time.ZoneId
-import java.util.*
 
 class BridgeFragment : Fragment(R.layout.fragment_bridge_detail_info), BridgeView {
 
@@ -90,8 +81,8 @@ class BridgeFragment : Fragment(R.layout.fragment_bridge_detail_info), BridgeVie
     }
 
     override fun setupTimeList(list: List<TimeModel>, id: Int) {
-        val setIcons = SetIcons()
-        when (setIcons.setTimeDivorces(list.get(id - 1).start, list.get(id - 1).end)) {
+        val setIcons = ProcessingTime()
+        when (setIcons.getBridgeIndicator(list.get(id - 1).start, list.get(id - 1).end)) {
             BridgeStatus.OPEN -> bridgeIndicator.setImageResource(R.drawable.ic_brige_normal)
             BridgeStatus.CLOSE -> bridgeIndicator.setImageResource(R.drawable.ic_brige_late)
             BridgeStatus.SOON_CLOSE -> bridgeIndicator.setImageResource(R.drawable.ic_brige_soon)

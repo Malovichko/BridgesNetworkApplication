@@ -1,4 +1,4 @@
-package com.androidschool.bridgesnetworkapplication.presentation.setIcons
+package com.androidschool.bridgesnetworkapplication.presentation.processingTime
 
 import android.os.Build
 import java.text.SimpleDateFormat
@@ -6,14 +6,14 @@ import java.time.LocalTime
 import java.time.ZoneId
 import java.util.*
 
-class SetIcons {
+class ProcessingTime {
     private val timeZone = TimeZone.getTimeZone("Europe/Moscow")
     private var timeZone1 = TimeZone.getTimeZone("Europe/Moscow")
     private val timeZoneOffset = ((timeZone1.rawOffset - timeZone.rawOffset) / 1000).toLong()
     private lateinit var startStr: String
     private lateinit var endStr: String
 
-    fun setTimeDivorces(
+    fun getBridgeIndicator(
         timeStart: String,
         timeEnd: String
     ): BridgeStatus {

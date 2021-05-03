@@ -5,20 +5,19 @@ import com.androidschool.bridgesnetworkapplication.data.network.model.SimpleBrid
 import com.androidschool.bridgesnetworkapplication.domain.model.BridgeModel
 import com.androidschool.bridgesnetworkapplication.domain.model.TimeModel
 
-class SimpleBridgeMapper {
+object SimpleBridgeMapper {
 
-    companion object {
+    fun mapApiToDomain(source: SimpleBridgeApiModel) = BridgeModel(
+        source.id,
+        source.name,
+        source.divorces[0].start,
+        source.divorces[0].end,
+        source.lat,
+        source.lng
+    )
 
-        fun mapApiToDomain(source: SimpleBridgeApiModel) = BridgeModel(
-            source.id,
-            source.name,
-            source.divorces[0].start,
-            source.divorces[0].end
-        )
-
-        fun mapApiTimeToDomain(source: DivorcesApiModel) = TimeModel(
-            source.divorces[0].start,
-            source.divorces[0].end
-        )
-    }
+    fun mapApiTimeToDomain(source: DivorcesApiModel) = TimeModel(
+        source.divorces[0].start,
+        source.divorces[0].end
+    )
 }

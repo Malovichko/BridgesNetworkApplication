@@ -5,5 +5,7 @@ data class BridgeModel(
     val id: Int,
     val name: String,
     val start: String,
-    val end: String
+    val end: String,
+    val lat: String,
+    val lng: String
 )

@@ -17,4 +17,5 @@ interface BridgesApiService {
     @GET("bridges/{bridgeId}")
     fun getBridgeInfo(@Path("bridgeId") id: Int): Single<BridgesPropertiesApiModel>
 
+
 }

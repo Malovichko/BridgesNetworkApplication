@@ -8,5 +8,9 @@ data class SimpleBridgeApiModel(
     @SerializedName("name")
     val name: String,
     @SerializedName("divorces")
-    val divorces: List<DivorcesBridgeApiModel>
+    val divorces: List<DivorcesBridgeApiModel>,
+    @SerializedName( "lat")
+    val lat: String,
+    @SerializedName("lng")
+    val lng: String
 )

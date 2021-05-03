@@ -43,7 +43,7 @@ class BridgeListFragment : Fragment(R.layout.fragment_list_bridges), BridgesList
 
     private fun initViews(view: View) {
         recyclerView = view.findViewById(R.id.recycler_view_character)
-        toolbar = view.findViewById(R.id.toolbar)
+//        toolbar = view.findViewById(R.id.toolbar)
 
     }
 }

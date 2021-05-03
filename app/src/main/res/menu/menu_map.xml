@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    android:icon="@drawable/ic_baseline_map_24_px">
-    <item android:id="@+id/menu_item_one"
-        android:enabled="true"
-        android:title="TODO" />
-
-</menu>
